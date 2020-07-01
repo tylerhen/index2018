@@ -45,7 +45,7 @@ podTemplate(
                 def registryIp = sh(script: 'getent hosts odstxkubereg | awk \'{ print $1 ; exit }\'', returnStdout: true).trim()
                 repository = "odstxkubereg:5000/hello"
                 sh "docker build -t ${repository}:${commitId} ."
-                sh "docker push ${repository}:${commitId}"
+                sh "sudo docker push ${repository}:${commitId}"
             }
         }
         stage ('Deploy') {
